@@ -1,0 +1,23 @@
+{% extends 'formApp/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="card my-4" style="width: 50%;">
+        <div class="card-body">
+            {% if messages %}
+                <div class="p-0 alert alert-success" role="alert">
+                    {% for message in messages %}
+                        <p class="mx-1 my-1 font-small"><i class="fas fa-check-circle my-auto" style="width: 25px; color:rgb(130, 201, 30);"></i>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <div class="mx-auto my-2" style="width: fit-content;">
+                    <button class="btn btn-primary" type="submit">Submit Form</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
