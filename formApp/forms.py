@@ -11,12 +11,6 @@ from django.forms.widgets import (
 )
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
-from django.forms.utils import ErrorList
-from django.forms.models import apply_limit_choices_to_to_formfield, model_to_dict
-
-
-# def convert_datetime_to_html_readable_value(datetime):
-
 
 
 class ClaimsForm(ModelForm):    
