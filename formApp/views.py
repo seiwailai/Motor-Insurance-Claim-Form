@@ -25,12 +25,12 @@ def editClaim(request, pk):
 
     if claim.claim_progress == 'Accepted':
         messages.info(request, 'The claim form is accepted and further amendment is not allowed.')
-        return render(request, 'formApp/edit.html', context={'claimForm': None})
+        claimForm = None
     else:
         claimForm = ClaimsForm(request.POST or None,instance=claim)
         if claimForm.is_valid():
             claim = claimForm.save(commit=False)
             claim.save()
             messages.success(request, 'The claim form is successfully updated.')
-        return render(request, 'formApp/edit.html', context={'claimForm':claimForm})
+    return render(request, 'formApp/edit.html', context={'claimForm':claimForm})
         
