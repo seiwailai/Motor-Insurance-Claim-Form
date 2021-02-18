@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from datetime import datetime
@@ -34,7 +35,7 @@ class Claims(models.Model):
     police_report_lodged = models.CharField(max_length=3, choices=yes_no_choices, blank=False)
     anybody_injured = models.CharField(max_length=3, choices=yes_no_choices, blank=False)
     photo = models.ImageField(upload_to='photos/', blank=False)
-    pdf_document = models.FileField(upload_to='pdfs/', blank=False)
+    pdf_document = models.FileField(upload_to='pdfs/', validators=[FileExtensionValidator(['pdf'])], blank=False)
     claim_progress_choices = (
         ('In Progress', 'In Progress'),
         ('Accepted', 'Accepted')

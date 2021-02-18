@@ -84,5 +84,5 @@ class ClaimsForm(ModelForm):
             'police_report_lodged': Select(attrs={'class':'form-control mb-2', 'placeholder': 'Police Report Lodged?'}),
             'anybody_injured': Select(attrs={'class':'form-control mb-2', 'placeholder': 'Anybody Injured?'}),
             'photo': ClearableFileInput(attrs={'class':'form-control-file mb-2', 'placeholder': 'Photos', 'type': 'file'}),
-            'pdf_document': ClearableFileInput(attrs={'class':'form-control-file mb-2', 'placeholder': 'PDF Documents of Insurance Cover', 'type': 'file'})
+            'pdf_document': ClearableFileInput(attrs={'class':'form-control-file mb-2', 'placeholder': 'PDF Documents of Insurance Cover', 'type': 'file', 'accept':'application/pdf'})
         }
