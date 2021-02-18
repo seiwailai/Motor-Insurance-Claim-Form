@@ -128,3 +128,10 @@ MEDIA_URL = '/media/'
 #Settings for Phone Number
 PHONENUMBER_DB_FORMAT = 'NATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'MY'
+
+#Log In Configuration
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
+#Log Out Configuration
+LOGOUT_REDIRECT_URL = '/login/'

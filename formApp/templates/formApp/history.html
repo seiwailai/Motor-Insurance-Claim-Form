@@ -9,9 +9,9 @@
                     <p class="my-0 mx-4">Owner: <span>{{ claim.name }}</span></p>
                 </div>
                 {% if claim.claim_progress == 'Accepted' %}
-                    <a class="btn btn-primary disabled" tabindex="-1" role="button" href="{% url 'claim-edit' claim.pk %}" aria-disabled="true">Edit</a>
+                    <a class="btn btn-primary disabled" tabindex="-1" role="button" href="{% url 'claim-edit' user.pk claim.pk %}" aria-disabled="true">Edit</a>
                 {% else %}
-                    <a class="btn btn-primary active" role="button"  href="{% url 'claim-edit' claim.pk %}" aria-pressed="true">Edit</a>
+                    <a class="btn btn-primary active" role="button"  href="{% url 'claim-edit' user.pk claim.pk %}" aria-pressed="true">Edit</a>
                 {% endif %}
             </div>
         </div>

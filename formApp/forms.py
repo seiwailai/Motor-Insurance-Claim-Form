@@ -1,4 +1,7 @@
+from django import forms
 from django.forms import ModelForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
+from django.contrib.auth.models import User
 from .models import Claims
 from django.forms.widgets import (
     TextInput, 
@@ -7,10 +10,29 @@ from django.forms.widgets import (
     DateTimeInput,
     ClearableFileInput,
     Select,
-    Textarea
+    Textarea,
+    PasswordInput
 )
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
+from django.contrib.auth import authenticate
+
+
+class CreateUserForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(CreateUserForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].widget = PasswordInput(attrs={'class':'form-control mb-2', 'placeholder': 'Password'})
+        self.fields['password2'].widget = PasswordInput(attrs={'class':'form-control mb-2', 'placeholder': 'Confirm Password'})
+        self.fields['username'].widget = TextInput(attrs={'class':'form-control mb-2', 'placeholder': 'Username'})
+        self.fields['password1'].label = _('Password')
+        self.fields['password1'].label = _('Confirm Password')
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, request=None, *args, **kwargs):
+        super(LoginForm, self).__init__(request, *args, **kwargs)
+        self.fields['username'].widget = TextInput(attrs={'class': 'form-control mb-2', 'placeholder': 'Username', 'id':'username'})
+        self.fields['password'].widget = PasswordInput(attrs={'class': 'form-control mb-2','placeholder': 'Password','id': 'password'})
 
 
 class ClaimsForm(ModelForm):    
